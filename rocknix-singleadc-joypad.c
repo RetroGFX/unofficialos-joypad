@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: GPL-2.0-or-later */
 /*
- * ROCKNIX singleadc joypad driver
+ * UnofficialOS singleadc joypad driver
  *
  * Copyright (C) 2024 ROCKNIX (https://github.com/ROCKNIX)
  */
@@ -18,7 +18,7 @@
 #endif
 #include <linux/delay.h>
 #include <linux/pwm.h>
-#include "rocknix-joypad.h"
+#include "unofficialos-joypad.h"
 
 #include <linux/kthread.h>
 #include <linux/tty.h>
@@ -31,7 +31,7 @@
 #include <linux/jiffies.h>
 
 /*----------------------------------------------------------------------------*/
-#define DRV_NAME "rocknix-singleadc-joypad"
+#define DRV_NAME "unofficialos-singleadc-joypad"
 /*----------------------------------------------------------------------------*/
 #define	ADC_MAX_VOLTAGE		1800
 #define	ADC_DATA_TUNING(x, p)	((x * p) / 100)
@@ -335,7 +335,7 @@ static int joypad_adc_read(struct analog_mux *amux, struct bt_adc *adc)
 /*
  * ATTRIBUTES:
  *
- * /sys/devices/platform/rocknix-singleadc-joypad/rumble_enable [rw]
+ * /sys/devices/platform/unofficialos-singleadc-joypad/rumble_enable [rw]
  */
 /*----------------------------------------------------------------------------*/
 static ssize_t joypad_store_rumble_enable(struct device *dev,
@@ -1330,7 +1330,7 @@ static int joypad_dt_parse(struct device *dev, struct joypad *joypad)
 		dev_info(dev, "%s : has rumble\n", __func__);
 
 	joypad->use_miyoo_serial =
-		device_property_present(dev, "rocknix,use-miyoo-serial-joypad");
+		device_property_present(dev, "unofficialos,use-miyoo-serial-joypad");
 	if (joypad->use_miyoo_serial) {
 		dev_info(dev, "%s : using Miyoo Serial Joypad logic\n", __func__);
 		/*
@@ -1469,7 +1469,7 @@ static void joypad_remove(struct platform_device *pdev)
 }
 /*----------------------------------------------------------------------------*/
 static const struct of_device_id joypad_of_match[] = {
-	{ .compatible = "rocknix-singleadc-joypad", },
+	{ .compatible = "unofficialos-singleadc-joypad", },
 	{},
 };
 
@@ -1507,8 +1507,8 @@ late_initcall(joypad_init);
 module_exit(joypad_exit);
 
 /*----------------------------------------------------------------------------*/
-MODULE_AUTHOR("ROCKNIX");
-MODULE_DESCRIPTION("ROCKNIX singleadc joypad driver");
+MODULE_AUTHOR("UnofficialOS");
+MODULE_DESCRIPTION("UnofficialOS singleadc joypad driver");
 MODULE_LICENSE("GPL");
 MODULE_ALIAS("platform:" DRV_NAME);
 MODULE_INFO(intree, "Y");

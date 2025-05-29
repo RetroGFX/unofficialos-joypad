@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: GPL-2.0-or-later */
 /*
- * ROCKNIX joypad driver
+ * UnofficialOS joypad driver
  *
  * Copyright (C) 2024 ROCKNIX (https://github.com/ROCKNIX)
  */
