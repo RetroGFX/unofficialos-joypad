@@ -669,6 +669,11 @@ static int joypad_probe(struct platform_device *pdev)
 	return 0;
 }
 
+static void joypad_remove(struct platform_device *pdev)
+{
+	// No-op
+}
+
 /*----------------------------------------------------------------------------*/
 static const struct of_device_id joypad_of_match[] = {
 	{ .compatible = "unofficialos-joypad", },
